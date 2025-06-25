@@ -2,7 +2,7 @@ import Layout from '@/views/layout/Layout'
 const device = {
     path: '/device',
     component: Layout,
-    meta: { title: '设备管理', icon: 'shebeiguanli1-copy', noCache: true, affix: false },
+    meta: { title: '煎煮设备', icon: 'shebeiguanli1-copy', noCache: true, affix: false },
     children: [
         {
             path: '/device/list',

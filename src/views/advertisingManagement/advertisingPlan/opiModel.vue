@@ -98,7 +98,6 @@
     import Alert from "@/utils/alert";
     import addEquipment from "./addEquipment.vue"
     import selectMaterial from "./selectMaterial.vue"
-    import player from '../materialManagement/videoPlay'
     import {mapActions} from 'vuex'
 
     export default {
