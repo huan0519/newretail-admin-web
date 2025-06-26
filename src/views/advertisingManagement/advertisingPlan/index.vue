@@ -4,16 +4,13 @@
         <div class="table">
             <el-row>
                 <router-link :to="`/advertisingManagement/advertisingPlan/opiModel`" class="resetWH">
-                    <el-button type="primary">
-                        添加计划
-                    </el-button>
                 </router-link>
             </el-row>
             <el-table
                     :data="lists"
                     style="width: 100%">
                 <el-table-column
-                        prop=""
+                        prop="number"
                         label="NO">
                 </el-table-column>
                     <el-table-column
@@ -21,28 +18,28 @@
                         label="方药组成">
                 </el-table-column>
                 <el-table-column
-                        prop="type"
+                        prop="illness"
                         label="患者">
                 </el-table-column>
 
                 <el-table-column
-                        prop="stateText"
+                        prop="source"
                         label="药方来源">
                 </el-table-column>
                 <el-table-column
-                        prop="devices"
+                        prop="department"
                         label="科室">
                 </el-table-column>
                 <el-table-column
-                        prop="devices"
+                        prop="diagnose"
                         label="处方诊断">
                 </el-table-column>
                 <el-table-column
-                        prop="devices"
+                        prop="time"
                         label="开方时间">
                 </el-table-column>
                 <el-table-column
-                        prop="devices"
+                        prop="operations"
                         label="操作">
                 </el-table-column>
             </el-table>
