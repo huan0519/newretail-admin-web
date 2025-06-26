@@ -13,53 +13,37 @@
                     :data="lists"
                     style="width: 100%">
                 <el-table-column
+                        prop=""
+                        label="NO">
+                </el-table-column>
+                    <el-table-column
                         prop="name"
-                        label="名称">
+                        label="方药组成">
                 </el-table-column>
                 <el-table-column
                         prop="type"
-                        label="类型">
+                        label="患者">
                 </el-table-column>
 
                 <el-table-column
                         prop="stateText"
-                        label="状态">
+                        label="药方来源">
                 </el-table-column>
                 <el-table-column
                         prop="devices"
-                        label="设备台数">
+                        label="科室">
                 </el-table-column>
                 <el-table-column
-                        fixed="right"
-                        label="操作"
-                >
-                    <template slot-scope="lists">
-                        <span
-                                type="text"
-                                size="small"
-                                class="option-span"
-                                @click="suspensionOfRelease(lists.row.id,lists.row.state)"
-                        >
-                            <span>{{lists.row.state=="PUBLISHED"?"暂停":"发布"}}</span>
-                        </span>
-                        <router-link
-                                size="small"
-                                class="option-span"
-                                style="margin: 0 5px;"
-                                :to="`/advertisingManagement/advertisingPlan/opiModel?id=`+lists.row.id">
-                            查看
-                        </router-link>
-                        <span
-                                type="text"
-                                size="small"
-                                class="option-span"
-                                @click="removeItem(lists.row.id)"
-                        >
-                            删除
-                        </span>
-
-
-                    </template>
+                        prop="devices"
+                        label="处方诊断">
+                </el-table-column>
+                <el-table-column
+                        prop="devices"
+                        label="开方时间">
+                </el-table-column>
+                <el-table-column
+                        prop="devices"
+                        label="操作">
                 </el-table-column>
             </el-table>
             <div class="pagination">
