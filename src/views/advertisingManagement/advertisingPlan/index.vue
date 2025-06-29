@@ -17,7 +17,7 @@
                         prop="name"
                         label="方药组成">
                         <template #default="scope">
-                            <div @click="toggleExpand(scope.row)" style="color: blue;cursor: pointer;">
+                            <div @click="toggleDetailDialog(scope.row)" style="color: blue;cursor: pointer;">
                                 {{ scope.row.name }}
                             </div>
                         </template>
@@ -47,18 +47,18 @@
                         prop="operations"
                         label="操作">
                         <template #default="scope">
-                            <div style="color: blue;cursor: pointer;">
+                            <div @click="toggleOperationDialog(scope.row)" style="color: blue;cursor: pointer;">
                                 {{ scope.row.operations }}
                             </div>
                         </template>
                 </el-table-column>
-            </el-table>
-            <!--信息项请-->
+            </el-table> 
+            <!--方药信息详请-->
             <el-dialog
                 title="方药详情信息"
-                :visible.sync="dialogVisible"
+                :visible.sync="detailDialogVisible"
                 width="50%"
-                :before-close="handleClose">
+                :before-close="handleDetailClose">
                 <div v-if="selectedItem">
                     <p><strong>NO:</strong> {{ selectedItem.number }}</p>
                     <p><strong>药材名称:</strong> {{ selectedItem.material }}</p>
@@ -66,6 +66,15 @@
                     <p><strong>备注:</strong> {{ selectedItem.note }}</p>
                 </div>
             </el-dialog>
+            <!--操作详情-->
+            <el-dialog
+                title="操作详情"
+                :visible.sync="operationDialogVisible"
+                width="80%"
+                :before-close="handleOperationClose">
+                <opi-model v-if="operationDialogVisible"></opi-model>
+            </el-dialog>
+           
             
             <div class="pagination">
                 <el-pagination
@@ -87,10 +96,12 @@
     import {pageSize} from '../../../config';
 
     const FormContainer = () => import('./form.vue');
+    const OpiModel = () => import('./addEquipment.vue');
     export default {
         name: "index",
         components: {
-            FormContainer
+            FormContainer,
+            'opi-model': OpiModel
         },
         data() {
             return {
@@ -104,7 +115,8 @@
                     query: '',
                     type: ''
                 },
-                dialogVisible:false,
+                detailDialogVisible: false,
+                operationDialogVisible: false,
                 selectedItem:null
             }
         },
@@ -260,12 +272,18 @@
             // 将数据添加到 lists 中
             this.lists = [...this.lists, ...newData];
         },
-        toggleExpand(row){
-            this.dialogVisible = true;
+        toggleDetailDialog(row){
+            this.detailDialogVisible = true;
             this.selectedItem = row;
         },
-        handleClose(){
-            this.dialogVisible = false;
+        toggleOperationDialog(row){
+            this.operationDialogVisible = true;
+        },
+        handleDetailClose() {
+            this.detailDialogVisible = false;
+        },
+        handleOperationClose() {
+            this.operationDialogVisible = false;
         },
             submitForm(res) {
                 this.params = {
