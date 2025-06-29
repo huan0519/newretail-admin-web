@@ -96,7 +96,7 @@
     import {pageSize} from '../../../config';
 
     const FormContainer = () => import('./form.vue');
-    const OpiModel = () => import('./addEquipment.vue');
+    const OpiModel = () => import('./opiModel.vue');
     export default {
         name: "index",
         components: {

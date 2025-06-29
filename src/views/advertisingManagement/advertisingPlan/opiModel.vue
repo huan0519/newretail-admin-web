@@ -150,13 +150,8 @@
   </div>
 </template>
 <script>
-    import {EQUIPMENTTYPE, ADVERTISINGSPACETYPE, POST_LIST, DETAIL_LIST, PUT_LIST} from '@/api/advertisingManagement'
-    import Alert from "@/utils/alert";
-    import addEquipment from "./addEquipment.vue"
-    import selectMaterial from "./selectMaterial.vue"
-    import {mapActions} from 'vuex'
-
     export default {
+      name: 'opi-Model',
         data() {
             return {
                 tableData: [
