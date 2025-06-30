@@ -1,149 +1,68 @@
 <template>
     <div>
     <el-table :data="tableData" style="width: 100%">
-      <el-table-column type="index" :index="indexMethod"></el-table-column>
-      <el-table-column label="NO" width="180">
+      <el-table-column type="index" :index="indexMethod" label="NO"></el-table-column>
+      <el-table-column label="NO" width="10">
         <template #default="scope">
-          <el-table style="width: 100%">
-            <el-table-column label="属性" width="100">
-              <template #default>
-                <span>NO</span>
-              </template>
-            </el-table-column>
-            <el-table-column label="值" width="100">
-              <template #default>
-                <span>{{ scope.row.number }}</span>
-              </template>
-            </el-table-column>
-          </el-table>
+          <div>
+            <span>{{ scope.row.number }}</span>
+          </div>
         </template>
       </el-table-column>
-      <el-table-column label="第一次加水量" width="180">
+      <el-table-column label="第一次加水量(mL)" width="180">
         <template #default="scope">
-          <el-table style="width: 100%">
-            <el-table-column label="属性" width="100">
-              <template #default>
-                <span>第一次加水量</span>
-              </template>
-            </el-table-column>
-            <el-table-column label="值" width="100">
-              <template #default>
-                <span>{{ scope.row.water_one }}</span>
-              </template>
-            </el-table-column>
-          </el-table>
+          <div>
+            <span>{{ scope.row.water_one }}</span>
+          </div>
         </template>
       </el-table-column>
-      <el-table-column label="浸泡时间">
+      <el-table-column label="浸泡时间(h)">
         <template #default="scope">
-          <el-table style="width: 100%">
-            <el-table-column label="属性" width="100">
-              <template #default>
-                <span>浸泡时间</span>
-              </template>
-            </el-table-column>
-            <el-table-column label="值" width="100">
-              <template #default>
-                <span>{{ scope.row.jing_time }}</span>
-              </template>
-            </el-table-column>
-          </el-table>
+          <div>
+            <span>{{ scope.row.jing_time }}</span>
+          </div>
         </template>
       </el-table-column>
-      <el-table-column label="武火时间">
+      <el-table-column label="武火时间(h)">
         <template #default="scope">
-          <el-table style="width: 100%">
-            <el-table-column label="属性" width="100">
-              <template #default>
-                <span>武火时间</span>
-              </template>
-            </el-table-column>
-            <el-table-column label="值" width="100">
-              <template #default>
-                <span>{{ scope.row.wuhuo_time }}</span>
-              </template>
-            </el-table-column>
-          </el-table>
+          <div>
+            <span>{{ scope.row.wuhuo_time }}</span>
+          </div>
         </template>
       </el-table-column>
-      <el-table-column label="一煎时间">
+      <el-table-column label="一煎时间(h)">
         <template #default="scope">
-          <el-table style="width: 100%">
-            <el-table-column label="属性" width="100">
-              <template #default>
-                <span>一煎时间</span>
-              </template>
-            </el-table-column>
-            <el-table-column label="值" width="100">
-              <template #default>
-                <span>{{ scope.row.first_time }}</span>
-              </template>
-            </el-table-column>
-          </el-table>
+          <div>
+            <span>{{ scope.row.first_time }}</span>
+          </div>
         </template>
       </el-table-column>
       <el-table-column label="第二次加水时间">
         <template #default="scope">
-          <el-table style="width: 100%">
-            <el-table-column label="属性" width="100">
-              <template #default>
-                <span>第二次加水时间</span>
-              </template>
-            </el-table-column>
-            <el-table-column label="值" width="100">
-              <template #default>
-                <span>{{ scope.row.water_two}}</span>
-              </template>
-            </el-table-column>
-          </el-table>
+          <div>
+            <span>{{ scope.row.water_two }}</span>
+          </div>
         </template>
       </el-table-column>
-      <el-table-column label="二煎时间">
+      <el-table-column label="二煎时间(h)">
         <template #default="scope">
-          <el-table style="width: 100%">
-            <el-table-column label="属性" width="100">
-              <template #default>
-                <span>二煎时间</span>
-              </template>
-            </el-table-column>
-            <el-table-column label="值" width="100">
-              <template #default>
-                <span>{{ scope.row.second_time }}</span>
-              </template>
-            </el-table-column>
-          </el-table>
+          <div>
+            <span>{{ scope.row.second_time }}</span>
+          </div>
         </template>
       </el-table-column>
-      <el-table-column label="吸水量">
+      <el-table-column label="吸水量(mL)">
         <template #default="scope">
-          <el-table style="width: 100%">
-            <el-table-column label="属性" width="100">
-              <template #default>
-                <span>吸水量</span>
-              </template>
-            </el-table-column>
-            <el-table-column label="值" width="100">
-              <template #default>
-                <span>{{ scope.row.water_account }}</span>
-              </template>
-            </el-table-column>
-          </el-table>
+          <div>
+            <span>{{ scope.row.water_account }}</span>
+          </div>
         </template>
       </el-table-column>
-      <el-table-column label="蒸发量">
+      <el-table-column label="蒸发量(mL)">
         <template #default="scope">
-          <el-table style="width: 100%">
-            <el-table-column label="属性" width="100">
-              <template #default>
-                <span>蒸发量</span>
-              </template>
-            </el-table-column>
-            <el-table-column label="值" width="100">
-              <template #default>
-                <span>{{ scope.row.evaporation }}</span>
-              </template>
-            </el-table-column>
-          </el-table>
+          <div>
+            <span>{{ scope.row.evaporation }}</span>
+          </div>
         </template>
       </el-table-column>
     </el-table>
@@ -156,15 +75,15 @@
             return {
                 tableData: [
                     {
-                        number: "",
-                        water_one: "",
-                        jing_time: "",
-                        wuhuo_time:"",
-                        first_time:"",
-                        water_two:"",
-                        second_time:"",
-                        water_account:"",
-                        evaporation:""
+                        number: "1",
+                        water_one: "271.82",
+                        jing_time: "2",
+                        wuhuo_time:"3",
+                        first_time:"5",
+                        water_two:"0",
+                        second_time:"2",
+                        water_account:"40",
+                        evaporation:"41.82"
 
 
                     },
