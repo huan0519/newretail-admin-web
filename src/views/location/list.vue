@@ -25,15 +25,16 @@
         <el-button type="primary" @click="go2add">添加场地</el-button>
       </div>
       <el-table :data="tableData" style="width: 100%">
-        <el-table-column prop="id" label="日期"></el-table-column>
-        <el-table-column prop="name" label="姓名"></el-table-column>
+        <el-table-column prop="id" label="日期">
+        </el-table-column>
+        <el-table-column prop="name" label="设备名"></el-table-column>
         <el-table-column prop="image" label="图片">
           <div slot-scope="scope">
             <img :src="scope.row.image" alt width="100" height="100">
           </div>
         </el-table-column>
         <el-table-column prop="typeName" label="设备类型"></el-table-column>
-        <el-table-column prop="typeName" label="场地地址">
+        <el-table-column prop="viewName" label="场地地址">
           <template slot-scope="scope">
             <div>{{scope.row.locationName}}</div>
             <div>
@@ -121,6 +122,7 @@ export default {
   mounted() {
     this.getLocationTypes();
     this.getTableData();
+    this.addData();
   },
   computed: {
     ...mapState({
@@ -136,6 +138,57 @@ export default {
   },
   methods: {
     ...mapActions(["getDeviceTypes", "getLocationTypes"]),
+    addData() {
+            // 示例数据
+            const newData = [
+                {
+                    id: '2023.12.03',
+                    name: '设备1',
+                    image: '',
+                    typeName: '类型1',
+                    viewName: '场地1',
+                    devices: '2',
+                    createdDate: '',
+                },
+                {
+                   id: '2024.06.09',
+                    name: '设备2',
+                    image: '',
+                    typeName: '类型2',
+                    viewName: '',
+                    devices: '3',
+                    createdDate: '',
+                },
+                {
+                   id: '2025.09.04',
+                    name: '设备3',
+                    image: '',
+                    typeName: '类型3',
+                    viewName: '',
+                    devices: '10',
+                    createdDate: '',
+                },
+                {
+                   id: '2022.03.01',
+                    name: '设备4',
+                    image: '',
+                    typeName: '类型4',
+                    viewName: '',
+                    devices: '9',
+                    createdDate: '',
+                },
+                {
+                   id: '2024.01.04',
+                    name: '设备5',
+                    image: '',
+                    typeName: '类型5',
+                    viewName: '',
+                    devices: '3',
+                    createdDate: '',
+                },
+            ];
+            this.tableData = [...this.tableData, ...newData];
+    },
     deleteItem(item) {
       var self = this;
       myalert.confirm("确定删除场地？").then(() => {
