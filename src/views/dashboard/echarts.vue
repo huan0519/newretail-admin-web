@@ -11,7 +11,9 @@
           <div class="columns">
             <!--左边一列-->
           <div class="column left-column">
-            <dv-border-box-13>今日统计方药</dv-border-box-13>
+            <dv-border-box-13>今日统计方药
+              <div class="today_total"></div>
+            </dv-border-box-13>
             <dv-border-box-10>本月统计方药</dv-border-box-10>
           </div>
           <!--中间一列-->
@@ -41,6 +43,8 @@ import * as flexible from './row2/mixins/flexible.js';
 import * as jquery from './row2/mixins/jquery.min.js';
 
 
+
+
 export default {
   data() {
     return {
@@ -51,12 +55,70 @@ export default {
     
   },
   async mounted() {
+    this.initChart();
     
+  },
+  methods:{
+    initChart(){
+      const myChart = echarts.init(document.querySelector('.today_total'));
+      const option = {
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    top: '5%',
+    left: 'center'
+  },
+  series: [
+    {
+      name: '今日方药统计图',
+      type: 'pie',
+      radius: ['40%', '70%'],
+      avoidLabelOverlap: false,
+      itemStyle: {
+        borderRadius: 10,
+        borderColor: '#fff',
+        borderWidth: 2
+      },
+      label: {
+        show: false,
+        position: 'center'
+      },
+      emphasis: {
+        label: {
+          show: true,
+          fontSize: 40,
+          fontWeight: 'bold'
+        }
+      },
+      labelLine: {
+        show: false
+      },
+      data: [
+        { value: 1048, name: '四君子汤' },
+        { value: 735, name: '六味地黄丸' },
+        { value: 580, name: '小青龙汤' },
+        { value: 484, name: '补中益气汤' },
+        { value: 300, name: '当归四逆汤' }
+      ]
+    }
+  ]
+};
+myChart.setOption(option);
+    }
   }
+
+
 };
 </script>
 
 <style lang="scss" scoped>
+.today_total {
+  width: 100%;
+  height: 300px;
+  position: relative; /* 添加定位属性 */
+  z-index: 100;       /* 设置较高的层级 */
+}
 .left-column {
   display: flex;
   flex-direction: column; 
@@ -74,7 +136,8 @@ export default {
   height: 660px;
   padding: 3.667rem 0.833rem 0;
   background: url(./images/bg.jpg) no-repeat 0 0 / cover;
-  position: relative; 
+  position: relative;
+  z-index: 1; 
 }
 
 .header {
@@ -117,6 +180,8 @@ export default {
   height: 50%;
   display: flex;
   padding: 10px;
+  position: relative; /* 添加定位属性 */
+  z-index: 50;   
 
 }
 .dv-border-box-10{
