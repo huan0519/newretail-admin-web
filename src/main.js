@@ -28,10 +28,12 @@ import './icons' // icon
 import "./permission" //权限控制
 import store from './store'//全局store
 import router from './router'
-
+import dataV from '@jiaminghi/data-view'
+Vue.use(dataV)
 // register global utility filters.
 import * as filters from './filters' // global filters
 import '@/utils/dom'//全局方法
+
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
