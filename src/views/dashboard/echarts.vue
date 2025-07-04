@@ -20,7 +20,13 @@
           </div>
           <!--中间一列-->
           <div class="column">
-            <dv-border-box-8 :reverse="true" class="">设备场地图</dv-border-box-8>
+            <dv-border-box-8 :reverse="true">
+              <div style="display: flex; flex-direction: column; height: 100%;">
+                <dv-decoration-7 style="width:220px;height:30px;color: azure; margin: 20px auto; text-align: center;font-weight: bold">本月各方药制作统计图</dv-decoration-7>
+                <dv-scroll-ranking-board :config="config" style="width:400px;height:500px;padding:20px" />
+              </div>
+              
+            </dv-border-box-8>
 
           </div>
           <!--右边一列-->
@@ -40,12 +46,31 @@
 </template>
 <script>
 import echarts from 'echarts'
+import { color } from 'echarts/lib/export';
 
 export default {
   data() {
     return {
       chart: null,
-      echarts: null
+      echarts: null,
+      // dv-scroll-ranking-board 配置
+      config: {
+        data: [
+          { name: '四君子汤', value: 320 },
+          { name: '六味地黄丸', value: 280 },
+          { name: '小青龙汤', value: 250 },
+          { name: '补中益气汤', value: 210 },
+          { name: '当归四逆汤', value: 180 },
+          { name: '逍遥散', value: 150 },
+          { name: '柴胡疏肝散', value: 120 },
+          { name: '生脉散', value: 243 },
+          { name: '龙胆泻肝汤', value: 132 },
+          { name: '四物汤', value: 281 },
+          { name: '血府逐瘀汤', value: 104 },
+        ],
+        color: ['#117BF5', '#00C8FC', '#3FFCC8', '#71B0FC', '#2E4B66', '#FFFFFF', '#003261'],
+        unit: '份'
+      }
     };
   },
   components: {
@@ -104,13 +129,23 @@ export default {
       
       const myChart = this.echarts.init(container);
       const option = {
-        text:"当日方药总计图",
+        title:{
+          text:"当日方药总计图",
+          left: 'center',
+          top:'2%',
+          textStyle:{
+            color:'#fff'
+          }
+          
+        },
+        
         tooltip: {
           trigger: 'item'
         },
         legend: {
           top: '5%',
-          left: 'center',
+          left: 'left',
+          orient: 'vertical',
           textStyle: {
             color: '#fff'
           }
@@ -134,7 +169,7 @@ export default {
             emphasis: {
               label: {
                 show: true,
-                fontSize: 40,
+                fontSize: 20,
                 fontWeight: 'bold'
               }
             },
@@ -274,7 +309,6 @@ export default {
   height: 250px;
   position: relative;
   z-index: 100;
-  background: rgba(0, 0, 0, 0.1); /* 添加背景色以便调试 */
 }
 .left-column {
   display: flex;
