@@ -31,8 +31,12 @@
           </div>
           <!--右边一列-->
           <div class="column">
-            <dv-border-box-12>方药中药</dv-border-box-12>
-            <dv-border-box-1>设备数量</dv-border-box-1>
+            <dv-border-box-12>
+              <div ref="regionChart" style="width: 100%; height: 100%;"></div>
+            </dv-border-box-12>
+            <dv-border-box-1>
+              <div ref="deviceChart" style="width: 100%; height: 100%; min-width: 0; box-sizing: border-box;"></div>
+            </dv-border-box-1>
 
           </div>
           </div>
@@ -84,6 +88,8 @@ export default {
       this.$nextTick(() => {
         this.initChart();
         this.initChartTwo();
+        this.initRegionChart();
+        this.initDeviceChart();
       });
     } catch (error) {
       console.error('Failed to load echarts:', error);
@@ -106,6 +112,8 @@ export default {
         this.$nextTick(() => {
           this.initChart();
           this.initChartTwo();
+          this.initRegionChart();
+          this.initDeviceChart();
         });
       };
       document.head.appendChild(script);
@@ -298,6 +306,238 @@ export default {
           myChart.resize();
         }
       });
+    },
+    initRegionChart() {
+      if (!this.echarts) {
+        console.error('ECharts not loaded');
+        return;
+      }
+      const container = this.$refs.regionChart;
+      if (!container) {
+        console.error('Region chart container not found');
+        return;
+      }
+      if (container.offsetHeight === 0) {
+        container.style.height = '200px';
+      }
+      const myChart = this.echarts.init(container);
+      const option = {
+        title: {
+          text: '六大地区中药产量统计',
+          left: 'center',
+          top: 10,
+          textStyle: {
+            color: '#fff',
+            fontSize: 16,
+            fontWeight: 'bold'
+          }
+        },
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          },
+          backgroundColor: 'rgba(0,0,0,0.8)',
+          borderColor: '#117BF5',
+          borderWidth: 1,
+          textStyle: {
+            color: '#fff'
+          }
+        },
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '15%',
+          top: '25%',
+          containLabel: true
+        },
+        xAxis: {
+          type: 'category',
+          data: ['华北地区', '华东地区', '华南地区', '华中地区', '西南地区', '西北地区'],
+          axisLine: {
+            lineStyle: {
+              color: '#fff'
+            }
+          },
+          axisLabel: {
+            color: '#fff',
+            fontSize: 12,
+            rotate: 45
+          }
+        },
+        yAxis: {
+          type: 'value',
+          name: '产量(吨)',
+          nameTextStyle: {
+            color: '#fff'
+          },
+          axisLine: {
+            lineStyle: {
+              color: '#fff'
+            }
+          },
+          splitLine: {
+            lineStyle: {
+              color: 'rgba(255,255,255,0.1)'
+            }
+          },
+          axisLabel: {
+            color: '#fff'
+          }
+        },
+        series: [{
+          name: '中药产量',
+          type: 'bar',
+          data: [1250, 1890, 1560, 2100, 980, 1350],
+          itemStyle: {
+            color: {
+              type: 'linear',
+              x: 0,
+              y: 0,
+              x2: 0,
+              y2: 1,
+              colorStops: [
+                { offset: 0, color: '#117BF5' },
+                { offset: 0.5, color: '#00C8FC' },
+                { offset: 1, color: '#3FFCC8' }
+              ]
+            },
+            borderRadius: [4, 4, 0, 0]
+          },
+          emphasis: {
+            itemStyle: {
+              color: {
+                type: 'linear',
+                x: 0,
+                y: 0,
+                x2: 0,
+                y2: 1,
+                colorStops: [
+                  { offset: 0, color: '#71B0FC' },
+                  { offset: 0.5, color: '#2E4B66' },
+                  { offset: 1, color: '#003261' }
+                ]
+              }
+            }
+          },
+          label: {
+            show: true,
+            position: 'top',
+            color: '#fff',
+            fontSize: 12
+          }
+        }]
+      };
+      myChart.setOption(option);
+      window.addEventListener('resize', () => {
+        if (myChart) {
+          myChart.resize();
+        }
+      });
+    },
+    initDeviceChart() {
+      if (!this.echarts) {
+        console.error('ECharts not loaded');
+        return;
+      }
+      const container = this.$refs.deviceChart;
+      if (!container) {
+        console.error('Device chart container not found');
+        return;
+      }
+      if (container.offsetHeight === 0) {
+        container.style.height = '200px';
+      }
+      const myChart = this.echarts.init(container);
+      const option = {
+        title: {
+          text: '设备运行状态监控',
+          left: 'center',
+          top: 10,
+          textStyle: {
+            color: '#fff',
+            fontSize: 16,
+            fontWeight: 'bold'
+          }
+        },
+        tooltip: {
+          trigger: 'item',
+          backgroundColor: 'rgba(0,0,0,0.8)',
+          borderColor: '#117BF5',
+          borderWidth: 1,
+          textStyle: {
+            color: '#fff'
+          }
+        },
+        legend: {
+          orient: 'vertical',
+          left: '5%',
+          top: 'middle',
+          textStyle: {
+            color: '#fff',
+            fontSize: 11
+          },
+          itemWidth: 12,
+          itemHeight: 8
+        },
+        series: [
+          {
+            name: '设备状态',
+            type: 'pie',
+            radius: ['25%', '60%'],
+            center: ['65%', '50%'],
+            roseType: 'area',
+            itemStyle: {
+              borderRadius: 8,
+              borderColor: '#fff',
+              borderWidth: 2
+            },
+            label: {
+              show: true,
+              color: '#fff',
+              fontSize: 12
+            },
+            labelLine: {
+              lineStyle: {
+                color: '#fff'
+              }
+            },
+            data: [
+              { 
+                value: 35, 
+                name: '正常运行', 
+                itemStyle: { color: '#3FFCC8' }
+              },
+              { 
+                value: 12, 
+                name: '待机状态', 
+                itemStyle: { color: '#00C8FC' }
+              },
+              { 
+                value: 8, 
+                name: '维护中', 
+                itemStyle: { color: '#117BF5' }
+              },
+              { 
+                value: 5, 
+                name: '故障停机', 
+                itemStyle: { color: '#FF6B6B' }
+              },
+              { 
+                value: 3, 
+                name: '离线状态', 
+                itemStyle: { color: '#FFA500' }
+              }
+            ]
+          }
+        ]
+      };
+      myChart.setOption(option);
+      window.addEventListener('resize', () => {
+        if (myChart) {
+          myChart.resize();
+        }
+      });
     }
   }
 };
@@ -384,10 +624,13 @@ export default {
   height: 49%;
   padding: 10px;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .dv-border-box-1{
   height: 50%;
   display: flex;
-  padding: 10px;
+  box-sizing: border-box;
+  min-width: 0; /* 防止flex子元素溢出 */
 }
 </style>

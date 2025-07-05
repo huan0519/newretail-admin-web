@@ -20,10 +20,6 @@
         <el-table :data="lists" style="width: 100%">
           <el-table-column prop="name" label="分组名"></el-table-column>
           <el-table-column prop="devices" label="设备数量"></el-table-column>
-          <!--                    <el-table-column-->
-          <!--                            prop="address"-->
-          <!--                            label="创建时间">-->
-          <!--                    </el-table-column>-->
           <el-table-column fixed="right" label="操作">
             <template slot-scope="scope">
               <el-button
@@ -127,17 +123,45 @@ export default {
       addModal: false,
       updateModal: false,
       addDeviceModal: false,
-      addDeviceModalDataForm: {} //添加设备数据
+      addDeviceModalDataForm: {}, //添加设备数据
+      lists: [
+        {
+          id: 1,
+          name: "生产设备组",
+          devices: 15
+        },
+        {
+          id: 2,
+          name: "测试设备组",
+          devices: 8
+        },
+        {
+          id: 3,
+          name: "监控设备组",
+          devices: 23
+        },
+        {
+          id: 4,
+          name: "备用设备组",
+          devices: 5
+        },
+        {
+          id: 5,
+          name: "研发设备组",
+          devices: 12
+        }
+      ]
     };
   },
   mounted() {
-    this.getDeviceGroups({ from: 0, size: pageSize, ...this.formInline });
-    this.getListTotal();
+    // 使用静态数据，不需要调用API
+    // this.getDeviceGroups({ from: 0, size: pageSize, ...this.formInline });
+    // this.getListTotal();
   },
   computed: {
     ...mapState("device/group/list", {
       tableLoading: state => state.tableLoading,
-      lists: state => state.lists,
+      // lists: state => state.lists,
       formInline: state => state.params,
       from: state => state.page.from,
       list_total: state => state.list_total,
@@ -147,7 +171,15 @@ export default {
     page: function() {
       return parseInt(this.from / this.size) + 1;
     },
-    handleCloseAddModal() {}
+    handleCloseAddModal() {},
+    // 使用静态数据作为lists
+    lists() {
+      return this.$data.lists;
+    },
+    // 更新总数以匹配静态数据
+    list_total() {
+      return this.$data.lists.length;
+    }
   },
   methods: {
     ...mapActions("device/group/list", [
