@@ -222,7 +222,7 @@ export default {
       const colors = ['#117BF5','#00C8FC','#3FFCC8','#71B0FC','#2E4B66','#FFFFFF','#003261'];
       const option = {
         title: {
-          text: '方药一周制作图',
+          text: '方药一周统计图',
           left: 'center',
           top: 10,
           textStyle: {
