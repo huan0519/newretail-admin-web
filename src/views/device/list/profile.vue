@@ -16,7 +16,14 @@
 </template>
 <script>
 export default {
-  props: ["devicesNum"]
+  data(){
+    return{
+      devicesNum: {
+            "devices": 10,
+            "activeDevices": 9
+        },
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>

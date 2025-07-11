@@ -6,10 +6,12 @@
       <div class="btns">
         <el-button type="primary" @click="addModal=true">添加设备</el-button>
       </div>
-      <el-table v-loading="tableLoading" :data="lists" style="width: 100%">
-        <el-table-column prop="id" label="编号"></el-table-column>
+      <el-table :data="lists" style="width: 100%">
+        <div>
+          
+        </div>
+        <!-- <el-table-column prop="id" label="编号"></el-table-column>
         <el-table-column prop="name" label="设备"></el-table-column>
-        <!-- <el-table-column prop="typeName" label="设备类型"></el-table-column> -->
         <el-table-column prop="typeName" label="场地地址">
           <template slot-scope="scope">
             <div>{{scope.row.locationName}}</div>
@@ -23,7 +25,6 @@
         </el-table-column>
         <el-table-column prop="groupName" label="分组名称"></el-table-column>
         <el-table-column prop="typeName" label="设备类型"></el-table-column>
-        <!-- <el-table-column prop="typeName" label="门状态"></el-table-column> -->
         <el-table-column prop="createdDate" label="创建时间">
           <template slot-scope="scope">{{scope.row.createdDate|parseTime}}</template>
         </el-table-column>
@@ -44,7 +45,7 @@
             <el-button type="text" size="small" @click="seeCode(scope.row.id)">二维码</el-button>
             <el-button type="text" size="small" @click="seewxCode(scope.row.id)">小程序码</el-button>
           </template>
-        </el-table-column>
+        </el-table-column> -->
       </el-table>
 
       <div class="pagination">

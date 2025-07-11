@@ -6,9 +6,9 @@
       :model="formData"
       class="demo-form-inline"
       label-position="right"
-      label-width="100px"
+      label-width="10px"
     >
-      <div>
+      <!-- <div>
         <el-form-item label="设备名称">
           <el-input v-model="formData.query" placeholder="公司名称"></el-input>
         </el-form-item>
@@ -21,8 +21,8 @@
             <el-option label="离线" :value="false"></el-option>
           </el-select>
         </el-form-item>
-      </div>
-      <div>
+      </div> -->
+      <!-- <div>
         <el-form-item label="场地">
           <el-select v-model="formData.locationId" placeholder="场地" :clearable="true">
             <el-option :key="item.id" v-for="item in locations" :label="item.name" :value="item.id"></el-option>
@@ -50,10 +50,10 @@
           </el-select>
         </el-form-item>
         <el-form-item style="padding-left:30px">
-          <!-- <el-button type="default" @click="resetForm1('ruleForm')">重置</el-button> -->
+          <el-button type="default" @click="resetForm1('ruleForm')">重置</el-button>
           <el-button type="primary" @click="onSubmit">查询</el-button>
         </el-form-item>
-      </div>
+      </div> -->
     </el-form>
   </div>
 </template>
@@ -94,6 +94,5 @@ export default {
 <style lang="scss" scoped>
 .form-container {
   background: #fff;
-  padding: 30px;
 }
 </style>

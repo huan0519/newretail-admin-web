@@ -30,8 +30,8 @@ const Store = {
         },
         //在线机器 离线机器
         devicesNum: {
-            "devices": 0,
-            "activeDevices": 0
+            "devices": 10,
+            "activeDevices": 9
         },
         //list total 用来分页，
         list_total: 0,
