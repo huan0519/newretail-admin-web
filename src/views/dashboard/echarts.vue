@@ -60,20 +60,25 @@ export default {
       // dv-scroll-ranking-board 配置
       config: {
         data: [
-          { name: '四君子汤', value: 320 },
-          { name: '六味地黄丸', value: 280 },
-          { name: '小青龙汤', value: 250 },
-          { name: '补中益气汤', value: 210 },
-          { name: '当归四逆汤', value: 180 },
-          { name: '逍遥散', value: 150 },
-          { name: '柴胡疏肝散', value: 120 },
-          { name: '生脉散', value: 243 },
-          { name: '龙胆泻肝汤', value: 132 },
-          { name: '四物汤', value: 281 },
-          { name: '血府逐瘀汤', value: 104 },
+          { name: '胡患者 方药1', value: 80 },
+          { name: '吴患者 方药2', value: 28 },
+          { name: '张患者 方药3', value: 25 },
+          { name: '白患者 方药4', value: 61 },
+          { name: '左患者 方药5', value: 87 },
+          { name: '朱患者 方药6', value: 99 },
+          { name: '孙患者 方药7', value: 34},
+          { name: '赵患者 方药3', value: 56 },
+          { name: '周患者 方药4', value: 76 },
+          { name: '王患者 方药2', value: 78 },
+          { name: '蒋患者 方药6', value: 21 },
+          { name: '严患者 方药8', value: 13 },
+          { name: '施患者 方药9', value: 5 },
+          { name: '杨患者 方药2', value: 51 },
+          { name: '韩患者 方药6', value: 46 },
+          { name: '陶患者 方药9', value: 10 },
         ],
         color: ['#117BF5', '#00C8FC', '#3FFCC8', '#71B0FC', '#2E4B66', '#FFFFFF', '#003261'],
-        unit: '份'
+        unit: '%'
       }
     };
   },
@@ -138,7 +143,7 @@ export default {
       const myChart = this.echarts.init(container);
       const option = {
         title:{
-          text:"当日方药总计图",
+          text:"各药材使用数量图",
           left: 'center',
           top:'2%',
           textStyle:{
@@ -160,7 +165,7 @@ export default {
         },
         series: [
           {
-            name: '今日方药统计图',
+            name: '各药材使用数量图',
             color: ['#117BF5','#00C8FC','#3FFCC8','#71B0FC','#2E4B66','#FFFFFF','#003261'],
             type: 'pie',
             radius: ['40%', '70%'],
@@ -185,11 +190,16 @@ export default {
               show: false
             },
             data: [
-              { value: 1048, name: '四君子汤' },
-              { value: 735, name: '六味地黄丸' },
-              { value: 580, name: '小青龙汤' },
-              { value: 484, name: '补中益气汤' },
-              { value: 300, name: '当归四逆汤' }
+              { value: 1048, name: '甘草' },
+              { value: 735, name: '茯苓' },
+              { value: 580, name: '白术' },
+              { value: 484, name: '黄芪' },
+              { value: 145, name: '当归' },
+              { value: 234, name: '川芎' },
+              { value: 312, name: '柴胡' },
+              { value: 421, name: '黄连' },
+              { value: 341, name: '丹参' },
+
             ]
           }
         ]
@@ -218,7 +228,7 @@ export default {
       }
       const myChart = this.echarts.init(container);
       const week = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
-      const data = [120, 132, 101, 134, 90, 230, 210]; // 示例数据
+      const data = [340, 314, 281, 434, 290, 301, 364]; // 示例数据
       const colors = ['#117BF5','#00C8FC','#3FFCC8','#71B0FC','#2E4B66','#FFFFFF','#003261'];
       const option = {
         title: {
@@ -323,7 +333,7 @@ export default {
       const myChart = this.echarts.init(container);
       const option = {
         title: {
-          text: '六大地区中药产量统计',
+          text: '各科室方药制作数量',
           left: 'center',
           top: 10,
           textStyle: {
@@ -353,7 +363,7 @@ export default {
         },
         xAxis: {
           type: 'category',
-          data: ['华北地区', '华东地区', '华南地区', '华中地区', '西南地区', '西北地区'],
+          data: ['中医内科', '中医外科', '针灸科', '推拿科', '骨伤科', '脾胃科'],
           axisLine: {
             lineStyle: {
               color: '#fff'
