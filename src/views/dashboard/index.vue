@@ -31,6 +31,6 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
 .pageContainer {
-  padding: 20px;
+  width: 100%;
 }
 </style>

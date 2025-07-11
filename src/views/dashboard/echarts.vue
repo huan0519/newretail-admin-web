@@ -1,5 +1,5 @@
 <template>
-  <dv-full-screen-container style="margin:100px">
+  <dv-full-screen-container style="margin:50px 0 0 90px ">
     <div>
       <div class="viewport">
         <!--头部-->
@@ -572,13 +572,14 @@ export default {
 }
 
 .viewport {
-  width: 1240px;
-  margin: 0 auto;
-  height: 660px;
+  width: 1283px;
+  margin: 0 0 0 120px;
+  min-height: calc(100vh - 84px);
   padding: 3.667rem 0.833rem 0;
   background: url(./images/bg.jpg) no-repeat 0 0 / cover;
   position: relative;
-  z-index: 1; 
+  z-index: 1;
+  box-sizing: border-box 
 }
 
 .header {
