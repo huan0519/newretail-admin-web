@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="tags-view-container">
     <scroll-pane ref="scrollPane" class="tags-view-wrapper">
       <router-link
@@ -17,7 +17,7 @@
       </router-link>
     </scroll-pane>
     <ul v-show="visible" :style="{left:left+'px',top:top+'px'}" class="contextmenu">
-      <!--<li @click="refreshSelectedTag(selectedTag)">{{'tagsView.refresh' }}</li>-->
+      <li @click="refreshSelectedTag(selectedTag)">{{'tagsView.refresh' }}</li>
       <li v-if="!(selectedTag.meta&&selectedTag.meta.affix)" @click="closeSelectedTag(selectedTag)">
         {{ '关闭' }}
       </li>
@@ -284,4 +284,4 @@ export default {
     }
   }
 }
-</style>
+</style> -->
