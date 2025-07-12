@@ -6,47 +6,32 @@
       <div class="btns">
         <el-button type="primary" @click="addModal=true">添加设备</el-button>
       </div>
-      <el-table :data="lists" style="width: 100%">
-        <div>
-          
+      <div class="card-list">
+        <div class="card" v-for="(card, idx) in cards" :key="idx">
+          <div class="row">
+            <span>{{ card.id }}</span>
+            <span>{{ card.mode }}</span>
+          </div>
+          <div class="row">
+            <span>{{ card.cookType }}</span>
+            <span>{{ card.cookStatus }}</span>
+          </div>
+          <div class="row">
+            <span>武/文(s)</span>
+            <span>{{ card.wuWen }}</span>
+          </div>
+          <div class="row">
+            <span>液：{{ card.liquid }}</span>
+            <span>煮：{{ card.boil }}</span>
+          </div>
+          <div class="row">
+            <span :class="['status', card.status]">{{ card.statusText }}</span>
+          </div>
+          <div class="row">
+            <span :class="['status', card.result]">{{ card.resultText }}</span>
+          </div>
         </div>
-        <!-- <el-table-column prop="id" label="编号"></el-table-column>
-        <el-table-column prop="name" label="设备"></el-table-column>
-        <el-table-column prop="typeName" label="场地地址">
-          <template slot-scope="scope">
-            <div>{{scope.row.locationName}}</div>
-            <div>
-              {{scope.row.province}}
-              {{scope.row.city}}
-              {{scope.row.district}}
-              {{scope.row.street}}
-            </div>
-          </template>
-        </el-table-column>
-        <el-table-column prop="groupName" label="分组名称"></el-table-column>
-        <el-table-column prop="typeName" label="设备类型"></el-table-column>
-        <el-table-column prop="createdDate" label="创建时间">
-          <template slot-scope="scope">{{scope.row.createdDate|parseTime}}</template>
-        </el-table-column>
-        <el-table-column prop="active" label="设备状态" width="50">
-          <template slot-scope="scope">
-            <span v-if="!scope.row.active">离线</span>
-            <span v-if="scope.row.active">在线</span>
-          </template>
-        </el-table-column>
-        <el-table-column fixed="right" label="操作">
-          <template slot-scope="scope">
-            <router-link
-              type="text"
-              size="small"
-              style="color:#409EFF;margin-right:10px;"
-              :to="`/device/list/edit?id=${scope.row.id}`"
-            >编辑</router-link>
-            <el-button type="text" size="small" @click="seeCode(scope.row.id)">二维码</el-button>
-            <el-button type="text" size="small" @click="seewxCode(scope.row.id)">小程序码</el-button>
-          </template>
-        </el-table-column> -->
-      </el-table>
+      </div>
 
       <div class="pagination">
         <el-pagination
@@ -90,7 +75,138 @@ const AddModal = () => import("./addModal");
 export default {
   data() {
     return {
-      addModal: false
+      addModal: false,
+      cards: [
+        {
+          id: '3010222',
+          mode: '自动',
+          cookType: '煎煮方式',
+          cookStatus: '空闲', 
+          wuWen: '0/0',
+          liquid: '0',
+          boil: '56.8',
+          status: 'standby', 
+          statusText: '待机',
+          result: 'normal', 
+          resultText: '正常'
+        },
+        {
+          id: '3010221',
+          mode: '自动',
+          cookType: '煎煮方式',
+          cookStatus: '空闲', 
+          wuWen: '0/0',
+          liquid: '0',
+          boil: '44.5',
+          status: 'standby', 
+          statusText: '待机',
+          result: 'normal', 
+          resultText: '正常'
+        },
+        {
+          id: '3010210',
+          mode: '自动',
+          cookType: '煎煮方式',
+          cookStatus: '一煎', 
+          wuWen: '0/4909',
+          liquid: '98.41',
+          boil: '102',
+          status: 'boil', 
+          statusText: '煎煮中(保温)',
+          result: 'timeout', 
+          resultText: '出库超时'
+        },
+        {
+          id: '3010209',
+          mode: '自动',
+          cookType: '煎煮方式',
+          cookStatus: '一煎', 
+          liquid: '0',
+          boil: '54.1',
+          status: 'standby', 
+          statusText: '待机',
+          result: 'timeout', 
+          resultText: '出库超时'
+        },
+        {
+          id: '3010208',
+          mode: '自动',
+          cookType: '煎煮方式',
+          cookStatus: '空闲', 
+          wuWen: '0/0',
+          liquid: '0',
+          boil: '56.5',
+          status: 'standby', 
+          statusText: '待机',
+          result: 'normal', 
+          resultText: '正常'
+        },
+        {
+          id: '3010207',
+          mode: '自动',
+          cookType: '煎煮方式',
+          cookStatus: '一煎', 
+          wuWen: '0/4909',
+          liquid: '100',
+          boil: '97.4',
+          status: 'boil', 
+          statusText: '煎煮中(保温)',
+          result: 'timeout', 
+          resultText: '出库超时'
+        },
+        {
+          id: '3010206',
+          mode: '自动',
+          cookType: '煎煮方式',
+          cookStatus: '一煎', 
+          wuWen: '0/5955',
+          liquid: '100',
+          boil: '100.8',
+          status: 'boil', 
+          statusText: '煎煮中(保温)',
+          result: 'normal', 
+          resultText: '正常'
+        },
+        {
+          id: '3010219',
+          mode: '自动',
+          cookType: '煎煮方式',
+          cookStatus: '一煎', 
+          wuWen: '0/535',
+          liquid: '100',
+          boil: '105.6',
+          status: 'boil-intermittent', 
+          statusText: '煎煮中(间歇)',
+          result: 'normal', 
+          resultText: '正常'
+        },
+        {
+          id: '3010218',
+          mode: '自动',
+          cookType: '煎煮方式',
+          cookStatus: '二煎', 
+          wuWen: '0/1110',
+          liquid: '59.53',
+          boil: '98.2',
+          status: 'boil-intermittent', 
+          statusText: '煎煮中(间歇)',
+          result: 'normal', 
+          resultText: '正常'
+        },
+        {
+          id: '3010217',
+          mode: '自动',
+          cookType: '煎煮方式',
+          cookStatus: '一煎', 
+          wuWen: '0/0',
+          liquid: '0',
+          boil: '97.1',
+          status: 'standby', 
+          statusText: '正常',
+          result: 'timeout', 
+          resultText: '出库超时'
+        },
+      ]
     };
   },
   components: {
@@ -208,5 +324,61 @@ export default {
 
 .pagination {
   margin-top: 20px;
+}
+
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 20px 0;
+  .card {
+    width: 200px;
+    background: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px #eee;
+    padding: 10px;
+    margin-bottom: 10px;
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+             span {
+         font-size: 14px;
+         border: 1px solid #ddd;
+         padding: 4px 8px;
+         border-radius: 1px;
+         text-align: center;
+         display: inline-block;
+         min-width: 90px;
+       }
+            .status {
+         width: 200px;
+         padding: 2px 8px;
+         border-radius: 4px;
+         color: #fff;
+         font-size: 13px;
+         text-align: center;
+         display: inline-block;
+         border: none;
+        &.standby {
+          background: #67c23a;
+        }
+        &.boil {
+          background: #a0522d;
+        }
+        &.boil-intermittent {
+          background: #98754a;
+          color: #333;
+        }
+        &.normal {
+          background: #67c23a;
+        }
+        &.timeout {
+          background: #ff9900;
+        }
+      }
+    }
+  }
 }
 </style>

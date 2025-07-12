@@ -16,35 +16,35 @@
           </div>
         </template>
       </el-table-column>
-      <el-table-column label="浸泡时间(h)">
+      <el-table-column label="浸泡时间(min)">
         <template #default="scope">
           <div>
             <span>{{ scope.row.jing_time }}</span>
           </div>
         </template>
       </el-table-column>
-      <el-table-column label="武火时间(h)">
+      <el-table-column label="武火时间(min)">
         <template #default="scope">
           <div>
             <span>{{ scope.row.wuhuo_time }}</span>
           </div>
         </template>
       </el-table-column>
-      <el-table-column label="一煎时间(h)">
+      <el-table-column label="一煎时间(min)">
         <template #default="scope">
           <div>
             <span>{{ scope.row.first_time }}</span>
           </div>
         </template>
       </el-table-column>
-      <el-table-column label="第二次加水时间">
+      <el-table-column label="第二次加水时间(min)">
         <template #default="scope">
           <div>
             <span>{{ scope.row.water_two }}</span>
           </div>
         </template>
       </el-table-column>
-      <el-table-column label="二煎时间(h)">
+      <el-table-column label="二煎时间(min)">
         <template #default="scope">
           <div>
             <span>{{ scope.row.second_time }}</span>
@@ -75,15 +75,15 @@
             return {
                 tableData: [
                     {
-                        number: "1",
-                        water_one: "271.82",
-                        jing_time: "2",
-                        wuhuo_time:"3",
-                        first_time:"5",
-                        water_two:"0",
-                        second_time:"2",
-                        water_account:"40",
-                        evaporation:"41.82"
+                        // number: "1",
+                        water_one: "1000",
+                        jing_time: "25",
+                        wuhuo_time:"30",
+                        first_time:"55",
+                        water_two:"45",
+                        second_time:"25",
+                        water_account:"250.98",
+                        evaporation:"749.02"
 
 
                     },

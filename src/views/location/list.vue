@@ -28,11 +28,18 @@
         <el-table-column prop="id" label="日期">
         </el-table-column>
         <el-table-column prop="name" label="设备名"></el-table-column>
-        <el-table-column prop="image" label="图片">
-          <div slot-scope="scope">
-            <img :src="scope.row.image" alt width="100" height="100">
-          </div>
-        </el-table-column>
+                 <el-table-column prop="image" label="图片">
+           <div slot-scope="scope">
+             <img 
+               :src="scope.row.image" 
+               alt="设备图片" 
+               width="100" 
+               height="100"
+               @error="handleImageError"
+               style="object-fit: cover; border-radius: 4px;"
+             >
+           </div>
+         </el-table-column>
         <el-table-column prop="typeName" label="设备类型"></el-table-column>
         <el-table-column prop="viewName" label="场地地址">
           <template slot-scope="scope">
@@ -141,51 +148,51 @@ export default {
     addData() {
             // 示例数据
             const newData = [
-                {
-                    id: '2023.12.03',
-                    name: '设备1',
-                    image: '',
-                    typeName: '类型1',
-                    viewName: '场地1',
-                    devices: '2',
-                    createdDate: '',
-                },
-                {
-                   id: '2024.06.09',
-                    name: '设备2',
-                    image: '',
-                    typeName: '类型2',
-                    viewName: '',
-                    devices: '3',
-                    createdDate: '',
-                },
-                {
-                   id: '2025.09.04',
-                    name: '设备3',
-                    image: '',
-                    typeName: '类型3',
-                    viewName: '',
-                    devices: '10',
-                    createdDate: '',
-                },
-                {
-                   id: '2022.03.01',
-                    name: '设备4',
-                    image: '',
-                    typeName: '类型4',
-                    viewName: '',
-                    devices: '9',
-                    createdDate: '',
-                },
-                {
-                   id: '2024.01.04',
-                    name: '设备5',
-                    image: '',
-                    typeName: '类型5',
-                    viewName: '',
-                    devices: '3',
-                    createdDate: '',
-                },
+                                 {
+                     id: '2023.12.03',
+                     name: '设备1',
+                     image: './images/device1.jpg',
+                     typeName: '类型1',
+                     viewName: '场地1',
+                     devices: '2',
+                     createdDate: '',
+                 },
+                                 {
+                    id: '2024.06.09',
+                     name: '设备2',
+                     image: './images/device2.jpg',
+                     typeName: '类型2',
+                     viewName: '',
+                     devices: '3',
+                     createdDate: '',
+                 },
+                                 {
+                    id: '2025.09.04',
+                     name: '设备3',
+                     image: './images/decive3.jpg',
+                     typeName: '类型3',
+                     viewName: '',
+                     devices: '10',
+                     createdDate: '',
+                 },
+                                 {
+                    id: '2022.03.01',
+                     name: '设备4',
+                     image: './images/decive4.jpg',
+                     typeName: '类型4',
+                     viewName: '',
+                     devices: '9',
+                     createdDate: '',
+                 },
+                                 {
+                    id: '2024.01.04',
+                     name: '设备5',
+                     image: './images/decive5.jpg',
+                     typeName: '类型5',
+                     viewName: '',
+                     devices: '3',
+                     createdDate: '',
+                 },
             ];
             this.tableData = [...this.tableData, ...newData];
     },
@@ -285,9 +292,13 @@ export default {
       var self = this;
       this.$router.push(`/location/add-device?id=${row.id}`);
     },
-    sure2addDevice() {
-      this.$data.AddDevice2locationVisible = false;
-    }
+         sure2addDevice() {
+       this.$data.AddDevice2locationVisible = false;
+     },
+     handleImageError(event) {
+       // 图片加载失败时显示默认图片
+       event.target.src = 'https://via.placeholder.com/100x100/CCCCCC/666666?text=无图片';
+     }
   }
 };
 </script>
