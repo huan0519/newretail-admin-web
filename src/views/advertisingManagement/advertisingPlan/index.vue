@@ -68,9 +68,9 @@
             </el-dialog>
             <!--操作详情-->
             <el-dialog
-                title="操作详情"
+                title="煎煮详情"
                 :visible.sync="operationDialogVisible"
-                width="80%"
+                width="37%"
                 :before-close="handleOperationClose">
                 <opi-model v-if="operationDialogVisible"></opi-model>
             </el-dialog>

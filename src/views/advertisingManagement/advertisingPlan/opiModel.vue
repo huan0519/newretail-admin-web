@@ -1,72 +1,50 @@
 <template>
-    <div>
-    <el-table :data="tableData" style="width: 100%">
-      <el-table-column type="index" :index="indexMethod" label="NO"></el-table-column>
-      <el-table-column label="NO" width="10">
-        <template #default="scope">
-          <div>
-            <span>{{ scope.row.number }}</span>
-          </div>
-        </template>
-      </el-table-column>
-      <el-table-column label="第一次加水量(mL)" width="180">
-        <template #default="scope">
-          <div>
-            <span>{{ scope.row.water_one }}</span>
-          </div>
-        </template>
-      </el-table-column>
-      <el-table-column label="浸泡时间(min)">
-        <template #default="scope">
-          <div>
-            <span>{{ scope.row.jing_time }}</span>
-          </div>
-        </template>
-      </el-table-column>
-      <el-table-column label="武火时间(min)">
-        <template #default="scope">
-          <div>
-            <span>{{ scope.row.wuhuo_time }}</span>
-          </div>
-        </template>
-      </el-table-column>
-      <el-table-column label="一煎时间(min)">
-        <template #default="scope">
-          <div>
-            <span>{{ scope.row.first_time }}</span>
-          </div>
-        </template>
-      </el-table-column>
-      <el-table-column label="第二次加水时间(min)">
-        <template #default="scope">
-          <div>
-            <span>{{ scope.row.water_two }}</span>
-          </div>
-        </template>
-      </el-table-column>
-      <el-table-column label="二煎时间(min)">
-        <template #default="scope">
-          <div>
-            <span>{{ scope.row.second_time }}</span>
-          </div>
-        </template>
-      </el-table-column>
-      <el-table-column label="吸水量(mL)">
-        <template #default="scope">
-          <div>
-            <span>{{ scope.row.water_account }}</span>
-          </div>
-        </template>
-      </el-table-column>
-      <el-table-column label="蒸发量(mL)">
-        <template #default="scope">
-          <div>
-            <span>{{ scope.row.evaporation }}</span>
-          </div>
-        </template>
-      </el-table-column>
-    </el-table>
-  </div>
+    <div class="opi-model-container">
+        <el-card v-for="(item, index) in tableData" :key="index" class="cooking-card">
+            <div class="card-content">
+                <div class="info-row">
+                    <div class="info-item">
+                        <span class="label">第一次加水量:</span>
+                        <span class="value">{{ item.water_one }} mL</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">浸泡时间:</span>
+                        <span class="value">{{ item.jing_time }} min</span>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-item">
+                        <span class="label">武火时间:</span>
+                        <span class="value">{{ item.wuhuo_time }} min</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">一煎时间:</span>
+                        <span class="value">{{ item.first_time }} min</span>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-item">
+                        <span class="label">第二次加水时间:</span>
+                        <span class="value">{{ item.water_two }} min</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">二煎时间:</span>
+                        <span class="value">{{ item.second_time }} min</span>
+                    </div>
+                </div>
+                <div class="info-row">
+                    <div class="info-item">
+                        <span class="label">吸水量:</span>
+                        <span class="value">{{ item.water_account }} mL</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">蒸发量:</span>
+                        <span class="value">{{ item.evaporation }} mL</span>
+                    </div>
+                </div>
+            </div>
+        </el-card>
+    </div>
 </template>
 <script>
     export default {
@@ -84,8 +62,6 @@
                         second_time:"25",
                         water_account:"250.98",
                         evaporation:"749.02"
-
-
                     },
                 ]
             };
@@ -104,6 +80,44 @@
 </script>
 
 <style lang="scss" scoped>
+    .opi-model-container {
+        
+        .cooking-card {
+            margin-bottom: 20px;
+            height: 200px;
+            width: 100%;
+            
+            .card-content {
+                .info-row {
+                    display: flex;
+                    
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                    
+                    .info-item {
+                        flex: 1;
+                        display: flex;
+                        align-items: center;
+                        padding: 8px 0;
+                        
+                        .label {
+                            font-weight: 600;
+                            color: #606266;
+                            min-width: 120px;
+                            margin-right: 10px;
+                        }
+                        
+                        .value {
+                            color: #303133;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     .form {
         height: 100%;
         background: #fff;
